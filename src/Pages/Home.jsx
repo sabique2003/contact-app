@@ -6,9 +6,12 @@ import { getContact } from '../Services/allApis';
 
 function Home() {
   const [contacts, setContacts] = useState([]);
+  const [username,setUsername]=useState("")
 
   useEffect(() => {
     fetchContacts();
+    const user=JSON.parse(sessionStorage.getItem('userData'))
+    setUsername(user?.username)
   }, []);
 
   const fetchContacts = async () => {
@@ -36,7 +39,7 @@ function Home() {
 
   return (
     <>
-      <h1 className='mt-2 ms-2'>Welcome User</h1>
+<h2>Welcome {username} ...</h2>
       <div className='container-fluid mb-3'>
         <Row>
           <Col sm={12} md={10}>
