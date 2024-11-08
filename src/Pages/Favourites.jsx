@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getFavourites, removeFromFavourites } from '../Services/allApis'; // Import removeFromFavourites
+import { getFavourites, removeFromFavourites } from '../Services/allApis'; 
 
 function Favourites() {
   const [favourites, setFavourites] = useState([]);
@@ -12,7 +12,7 @@ function Favourites() {
     try {
       const res = await getFavourites();
       if (res.status === 200) {
-        setFavourites(res.data); // Set favourites from the API
+        setFavourites(res.data); 
       }
     } catch (error) {
       console.error("Failed to fetch favourites", error);
@@ -23,7 +23,7 @@ function Favourites() {
     try {
       const res = await removeFromFavourites(id);
       if (res.status === 200) {
-        // Remove contact from the list
+        
         setFavourites(favourites.filter(contact => contact.id !== id));
         toast.success("Removed from Favourites");
       } else {
